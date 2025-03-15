@@ -5,4 +5,4 @@
 1. 前提条件
 2. `pnpm install` で依存関係をインストール
 3. `pnpm exec tsc` で ビルド
-4. `npx http-server   ` で dev server 起動
+4. `npx http-server` で dev server 起動
