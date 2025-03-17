@@ -1,10 +1,10 @@
-// HTML要素の取得
 const display = document.getElementById("display") as HTMLInputElement;
 const buttons = document.querySelectorAll("button");
 
 let currentInput: string = "";
 let operator: string | null = null;
 let previousInput: string = "";
+let isResultDisplayed: boolean = false; // 計算結果が表示されたかどうか
 
 // ボタンのクリック処理
 buttons.forEach((button) => {
@@ -27,6 +27,10 @@ buttons.forEach((button) => {
 
 // 数字を追加
 function appendNumber(num: string) {
+  if (isResultDisplayed) {
+    currentInput = ""; // 計算結果が表示された後はリセット
+    isResultDisplayed = false;
+  }
   currentInput += num;
   updateDisplay();
 }
@@ -72,6 +76,7 @@ function calculate() {
   currentInput = result.toString();
   operator = null;
   previousInput = "";
+  isResultDisplayed = true;
   updateDisplay();
 }
 
@@ -80,6 +85,7 @@ function clearDisplay() {
   currentInput = "";
   previousInput = "";
   operator = null;
+  isResultDisplayed = false;
   updateDisplay();
 }
 
